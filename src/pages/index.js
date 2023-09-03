@@ -15,19 +15,43 @@ export default function Home() {
   return (
     <div className="flex">
       <Sidebar className="w-1/5 h-screen">
-        <Menu>
+        <Menu className="bg-slate-900">
           <MenuItem>
             <h2 className="text-2xl font-bold">genai</h2>
           </MenuItem>
-          <MenuItem icon={<LuLayoutDashboard />}>Dashboard</MenuItem>
-          <MenuItem icon={<BsChatLeft />}>Conversation</MenuItem>
-          <MenuItem icon={<GoImage />}>Image Generation</MenuItem>
-          <MenuItem icon={<LuVideo />}>Video Generation</MenuItem>
-          <MenuItem icon={<PiMusicNotesSimpleBold />}>
+          <MenuItem icon={<LuLayoutDashboard style={{ color: "blue" }} />} className="text-gray-400 font-semibold">
+            Dashboard
+          </MenuItem>
+          <MenuItem
+            icon={
+              <BsChatLeft
+                style={{
+                  color: "purple",
+                  strokeWidth: "1px",
+                  stroke: "purple",
+                }}
+              />
+            }
+            className="text-gray-400 font-semibold"
+          >
+            Conversation
+          </MenuItem>
+          <MenuItem icon={<GoImage style={{ color: "violet" }} />} className="text-gray-400 font-semibold">
+            Image Generation
+          </MenuItem>
+          <MenuItem icon={<LuVideo style={{ color: "orange" }} />} className="text-gray-400 font-semibold">
+            Video Generation
+          </MenuItem>
+          <MenuItem
+            icon={<PiMusicNotesSimpleBold style={{ color: "lightgreen" }}/>} 
+            className="text-gray-400 font-semibold"
+          >
             Music Generation
           </MenuItem>
-          <MenuItem icon={<BsCode />}>Code Generation</MenuItem>
-          <MenuItem icon={<FiSettings />}>Settings</MenuItem>
+          <MenuItem icon={<BsCode style={{ color: "green" }} />} className="text-gray-400 font-semibold">
+            Code Generation
+          </MenuItem>
+          <MenuItem icon={<FiSettings />} className="text-gray-400 font-semibold">Settings</MenuItem>
         </Menu>
       </Sidebar>
       <h1 className="text-3xl font-bold underline">Hello world!</h1>
