@@ -8,6 +8,7 @@ import { BsChatLeft, BsCode } from "react-icons/bs";
 import { GoImage } from "react-icons/go";
 import { PiMusicNotesSimpleBold } from "react-icons/pi";
 import { FiSettings } from "react-icons/fi";
+import HeroSection from "@/components/Hero";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -19,7 +20,10 @@ export default function Home() {
           <MenuItem>
             <h2 className="text-2xl font-bold">genai</h2>
           </MenuItem>
-          <MenuItem icon={<LuLayoutDashboard style={{ color: "blue" }} />} className="text-gray-400 font-semibold">
+          <MenuItem
+            icon={<LuLayoutDashboard style={{ color: "blue" }} />}
+            className="text-gray-400 font-semibold"
+          >
             Dashboard
           </MenuItem>
           <MenuItem
@@ -36,25 +40,48 @@ export default function Home() {
           >
             Conversation
           </MenuItem>
-          <MenuItem icon={<GoImage style={{ color: "violet" }} />} className="text-gray-400 font-semibold">
+          <MenuItem
+            icon={<GoImage style={{ color: "violet" }} />}
+            className="text-gray-400 font-semibold"
+          >
             Image Generation
           </MenuItem>
-          <MenuItem icon={<LuVideo style={{ color: "orange" }} />} className="text-gray-400 font-semibold">
+          <MenuItem
+            icon={<LuVideo style={{ color: "orange" }} />}
+            className="text-gray-400 font-semibold"
+          >
             Video Generation
           </MenuItem>
           <MenuItem
-            icon={<PiMusicNotesSimpleBold style={{ color: "lightgreen" }}/>} 
+            icon={<PiMusicNotesSimpleBold style={{ color: "lightgreen" }} />}
             className="text-gray-400 font-semibold"
           >
             Music Generation
           </MenuItem>
-          <MenuItem icon={<BsCode style={{ color: "green" }} />} className="text-gray-400 font-semibold">
+          <MenuItem
+            icon={<BsCode style={{ color: "green" }} />}
+            className="text-gray-400 font-semibold"
+          >
             Code Generation
           </MenuItem>
-          <MenuItem icon={<FiSettings />} className="text-gray-400 font-semibold">Settings</MenuItem>
+          <MenuItem
+            icon={<FiSettings />}
+            className="text-gray-400 font-semibold"
+          >
+            Settings
+          </MenuItem>
         </Menu>
       </Sidebar>
-      <h1 className="text-3xl font-bold underline">Hello world!</h1>
+      {/*<h1 className="text-3xl font-bold underline">Explore the power of Ai</h1>*/}
+      <section className="flex flex-col gap-5 justify-items-center pt-20 items-center w-full ">
+        <HeroSection />
+
+        <div className="flex flex-col w-full justify-center items-center px-20">
+          <div className=" border border-indigo-400 w-full">
+            <p className="text-black"> Conversation</p>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }
