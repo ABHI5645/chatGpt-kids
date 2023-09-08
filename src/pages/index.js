@@ -15,8 +15,8 @@ const inter = Inter({ subsets: ["latin"] });
 export default function Home() {
   return (
     <div className="flex">
-      <Sidebar className="w-1/5 h-screen">
-        <Menu className="bg-slate-900">
+      <Sidebar className="w-1/5 h-screen" backgroundColor="rgb(15 23 42)">
+        <Menu>
           <MenuItem>
             <h2 className="text-2xl font-bold">genai</h2>
           </MenuItem>
@@ -73,6 +73,7 @@ export default function Home() {
         </Menu>
       </Sidebar>
       {/*<h1 className="text-3xl font-bold underline">Explore the power of Ai</h1>*/}
+
       <section className="flex flex-col gap-5 justify-items-center pt-20 items-center w-full ">
         <HeroSection />
 
@@ -112,7 +113,7 @@ export default function Home() {
           <div className=" border border-gray-200 w-full py-3 px-2 rounded-md">
             <div className="flex flex-row gap-2">
               <div className="mt-[0.2rem] bg-violet-100 p-1 rounded-md">
-                <BsCode style={{color:'green'}} />
+                <BsCode style={{ color: "green" }} />
               </div>
               <p className="text-black font-semibold"> Code Generation </p>
             </div>
