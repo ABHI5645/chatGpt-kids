@@ -76,9 +76,46 @@ export default function Home() {
       <section className="flex flex-col gap-5 justify-items-center pt-20 items-center w-full ">
         <HeroSection />
 
-        <div className="flex flex-col w-full justify-center items-center px-20">
-          <div className=" border border-indigo-400 w-full">
-            <p className="text-black"> Conversation</p>
+        <div className="flex flex-col gap-3 w-full justify-center items-center px-20">
+          <div className=" border border-gray-200 w-full py-3 px-2 rounded-md">
+            <div className="flex flex-row gap-2">
+              <div className="mt-[0.2rem] bg-violet-200 p-1 rounded-md">
+                <BsChatLeft />
+              </div>
+              <p className="text-black font-semibold"> Conversation </p>
+            </div>
+          </div>
+          <div className=" border border-gray-200 w-full py-3 px-2 rounded-md">
+            <div className="flex flex-row gap-2">
+              <div className="mt-[0.2rem] bg-pink-100 p-1 rounded-md">
+                <GoImage style={{ color: "maroon" }} />
+              </div>
+              <p className="text-black font-semibold"> Image Generation </p>
+            </div>
+          </div>
+          <div className=" border border-gray-200 w-full py-3 px-2 rounded-md">
+            <div className="flex flex-row gap-2">
+              <div className="mt-[0.2rem] bg-green-100 p-1 rounded-md">
+                <PiMusicNotesSimpleBold style={{ color: "green" }} />
+              </div>
+              <p className="text-black font-semibold"> Music Generation </p>
+            </div>
+          </div>
+          <div className=" border border-gray-200 w-full py-3 px-2 rounded-md">
+            <div className="flex flex-row gap-2">
+              <div className="mt-[0.2rem] bg-orange-50 p-1 rounded-md">
+                <LuVideo style={{ color: "darkorange" }} />
+              </div>
+              <p className="text-black font-semibold"> Video Generation </p>
+            </div>
+          </div>
+          <div className=" border border-gray-200 w-full py-3 px-2 rounded-md">
+            <div className="flex flex-row gap-2">
+              <div className="mt-[0.2rem] bg-violet-100 p-1 rounded-md">
+                <BsCode style={{color:'green'}} />
+              </div>
+              <p className="text-black font-semibold"> Code Generation </p>
+            </div>
           </div>
         </div>
       </section>
