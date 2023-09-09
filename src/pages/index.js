@@ -18,7 +18,7 @@ export default function Home() {
       <Sidebar className="w-1/5 h-screen" backgroundColor="rgb(15 23 42)">
         <Menu>
           <MenuItem>
-            <h2 className="text-2xl font-bold">genai</h2>
+            <h2 className="text-2xl text-white mb-5">genai</h2>
           </MenuItem>
           <MenuItem
             icon={<LuLayoutDashboard style={{ color: "blue" }} />}
@@ -88,18 +88,18 @@ export default function Home() {
           </div>
           <div className=" border border-gray-200 w-full py-3 px-2 rounded-md">
             <div className="flex flex-row gap-2">
-              <div className="mt-[0.2rem] bg-pink-100 p-1 rounded-md">
-                <GoImage style={{ color: "maroon" }} />
-              </div>
-              <p className="text-black font-semibold"> Image Generation </p>
-            </div>
-          </div>
-          <div className=" border border-gray-200 w-full py-3 px-2 rounded-md">
-            <div className="flex flex-row gap-2">
               <div className="mt-[0.2rem] bg-green-100 p-1 rounded-md">
                 <PiMusicNotesSimpleBold style={{ color: "green" }} />
               </div>
               <p className="text-black font-semibold"> Music Generation </p>
+            </div>
+          </div>
+          <div className=" border border-gray-200 w-full py-3 px-2 rounded-md">
+            <div className="flex flex-row gap-2">
+              <div className="mt-[0.2rem] bg-pink-100 p-1 rounded-md">
+                <GoImage style={{ color: "maroon" }} />
+              </div>
+              <p className="text-black font-semibold"> Image Generation </p>
             </div>
           </div>
           <div className=" border border-gray-200 w-full py-3 px-2 rounded-md">
