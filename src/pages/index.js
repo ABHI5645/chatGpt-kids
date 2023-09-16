@@ -10,6 +10,7 @@ import { PiMusicNotesSimpleBold } from "react-icons/pi";
 import { FiSettings } from "react-icons/fi";
 import HeroSection from "@/components/Hero";
 import Link from "next/link";
+import { InputWithButton } from "@/components/InputWithButton";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -130,6 +131,7 @@ export default function Home() {
             </div>
           </div>
         </div>
+        <InputWithButton />
       </section>
     </div>
   );
