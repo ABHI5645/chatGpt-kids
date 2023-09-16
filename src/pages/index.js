@@ -9,6 +9,7 @@ import { GoImage } from "react-icons/go";
 import { PiMusicNotesSimpleBold } from "react-icons/pi";
 import { FiSettings } from "react-icons/fi";
 import HeroSection from "@/components/Hero";
+import Link from "next/link";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -16,13 +17,23 @@ export default function Home() {
   return (
     <div className="flex">
       <Sidebar className="w-1/5 h-screen" backgroundColor="rgb(15 23 42)">
-        <Menu>
+        <Menu
+          menuItemStyles={{
+            button: {
+              [`&.active`]: {
+                backgroundColor: "#13395e",
+                color: "#b6c8d9",
+              },
+            },
+          }}
+        >
           <MenuItem>
             <h2 className="text-2xl font-bold">genai</h2>
           </MenuItem>
           <MenuItem
             icon={<LuLayoutDashboard style={{ color: "blue" }} />}
             className="text-gray-400 font-semibold"
+            component={<Link href="/" />}
           >
             Dashboard
           </MenuItem>
