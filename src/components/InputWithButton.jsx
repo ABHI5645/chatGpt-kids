@@ -39,7 +39,6 @@ export function InputWithButton() {
       console.log(response);
       setLoading(false);
     });
-    
   };
   return (
     <div>
@@ -50,12 +49,16 @@ export function InputWithButton() {
             placeholder="Enter Text"
             onChange={(e) => setInputValue(e.target.value)}
           />
-          <Button type="submit">
+          <Button type="submit" disabled={loading}>
             {loading ? <>Loading...</> : <>Convert to audio</>}
           </Button>
         </div>
       </form>
-      {audioUrl ? <audio src={audioUrl} controls /> : <></>}
+      {audioUrl ? (
+        <audio className="mt-[1rem]" src={audioUrl} controls />
+      ) : (
+        <></>
+      )}
     </div>
   );
 }
