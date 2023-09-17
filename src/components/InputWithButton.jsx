@@ -1,11 +1,14 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useState } from "react";
+import { AlertDescription } from "./ui/alert";
+import { AlertDestructive } from "./ModelFailedAlert";
 
 export function InputWithButton() {
   const [inputValue, setInputValue] = useState("");
   const [audioUrl, setAudioUrl] = useState();
   const [loading, setLoading] = useState(false);
+  const [displayAlert, setDisplayAlert] = useState(false);
 
   const query = async (data) => {
     const response = await fetch(
@@ -20,7 +23,8 @@ export function InputWithButton() {
     );
     const audioData = await response.arrayBuffer();
     if (!response.ok) {
-      throw new Error("Request failed");
+      //throw new Error("Request failed");
+      setDisplayAlert(true);
     }
     const blob = new Blob([audioData]);
     const url = URL.createObjectURL(blob);
@@ -58,6 +62,11 @@ export function InputWithButton() {
         <audio className="mt-[1rem]" src={audioUrl} controls />
       ) : (
         <></>
+      )}
+      {displayAlert && (
+        <div className="mt-[1rem]">
+          <AlertDestructive />
+        </div>
       )}
     </div>
   );
