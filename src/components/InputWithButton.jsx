@@ -3,38 +3,59 @@ import { Input } from "@/components/ui/input";
 import { useState } from "react";
 
 export function InputWithButton() {
-  const [text, setText] = useState("");
-  const handleClick = () => {
-    console.log(text);
-    async function query(data) {
-      const response = await fetch(
-        "https://api-inference.huggingface.co/models/suno/bark-small",
-        {
-          headers: {
-            Authorization: "Bearer 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",
-          },
-          method: "POST",
-          body: JSON.stringify(data),
-        }
-      );
-      const result = await response.json();
-      return result;
-    }
+  const [inputValue, setInputValue] = useState("");
+  const [audioUrl, setAudioUrl] = useState();
+  const [loading, setLoading] = useState(false);
 
-    query({ inputs: text }).then((response) => {
-      console.log(JSON.stringify(response));
+  const query = async (data) => {
+    const response = await fetch(
+      "https://api-inference.huggingface.co/models/facebook/fastspeech2-en-ljspeech",
+      {
+        headers: {
+          Authorization: `Bearer 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`,
+        },
+        method: "POST",
+        body: JSON.stringify(data),
+      }
+    );
+    const audioData = await response.arrayBuffer();
+    if (!response.ok) {
+      throw new Error("Request failed");
+    }
+    const blob = new Blob([audioData]);
+    const url = URL.createObjectURL(blob);
+    //console.log(result);
+    setAudioUrl(url);
+    return url;
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    setLoading(true);
+    console.log(inputValue);
+
+    query({ inputs: inputValue }).then((response) => {
+      //console.log(JSON.stringify(response));
+      console.log(response);
+      setLoading(false);
     });
+    
   };
   return (
-    <div className="flex w-full max-w-sm items-center space-x-2">
-      <Input
-        type="email"
-        placeholder="Enter Text"
-        onChange={(e) => setText(e.target.value)}
-      />
-      <Button type="submit" onClick={() => handleClick()}>
-        Convert to audio
-      </Button>
+    <div>
+      <form onSubmit={handleSubmit}>
+        <div className="flex w-full max-w-full items-center space-x-2">
+          <Input
+            type="text"
+            placeholder="Enter Text"
+            onChange={(e) => setInputValue(e.target.value)}
+          />
+          <Button type="submit">
+            {loading ? <>Loading...</> : <>Convert to audio</>}
+          </Button>
+        </div>
+      </form>
+      {audioUrl ? <audio src={audioUrl} controls /> : <></>}
     </div>
   );
 }
