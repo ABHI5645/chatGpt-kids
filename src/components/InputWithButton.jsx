@@ -18,6 +18,10 @@ export function InputWithButton() {
       value: "facebook/fastspeech2-en-ljspeech",
       label: "facebook/fastspeech2-en-ljspeech",
     },
+    {
+      value: "suno/bark-small",
+      label: "suno/bark-small",
+    },
   ];
 
   const query = async (data, model) => {
@@ -31,11 +35,13 @@ export function InputWithButton() {
         body: JSON.stringify(data),
       }
     );
-    const audioData = await response.arrayBuffer();
     if (!response.ok) {
       //throw new Error("Request failed");
       setDisplayAlert(true);
+      return;
     }
+    setDisplayAlert(false);
+    const audioData = await response.arrayBuffer();
     const blob = new Blob([audioData]);
     const url = URL.createObjectURL(blob);
     //console.log(result);

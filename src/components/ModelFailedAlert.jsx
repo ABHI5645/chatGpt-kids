@@ -8,7 +8,7 @@ export function AlertDestructive() {
       <AlertCircle className="h-4 w-4" />
       <AlertTitle>Error</AlertTitle>
       <AlertDescription>
-        The model is currently busy. Please try again later!
+        The model is currently busy. Please try again later or try with another model!
       </AlertDescription>
     </Alert>
   );
