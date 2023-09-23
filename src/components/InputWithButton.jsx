@@ -11,6 +11,8 @@ export function InputWithButton() {
   const [loading, setLoading] = useState(false);
   const [displayAlert, setDisplayAlert] = useState(false);
 
+  const [model, setModel] = useState(null);
+
   const options = [
     {
       value: "facebook/fastspeech2-en-ljspeech",
@@ -44,8 +46,8 @@ export function InputWithButton() {
   const handleSubmit = (event) => {
     event.preventDefault();
     setLoading(true);
-    console.log(inputValue);
-
+    console.log(`User input:${inputValue}`);
+    console.log(`Model chosen:${model.value}`);
     query({ inputs: inputValue }).then((response) => {
       //console.log(JSON.stringify(response));
       console.log(response);
@@ -61,7 +63,12 @@ export function InputWithButton() {
             placeholder="Enter Text"
             onChange={(e) => setInputValue(e.target.value)}
           />
-          <Select options={options} className="w-[20rem]" placeholder="Select model" />
+          <Select
+            options={options}
+            className="w-[20rem]"
+            placeholder="Select model"
+            onChange={setModel}
+          />
           <Button type="submit" disabled={loading}>
             {loading ? <>Loading...</> : <>Convert to audio</>}
           </Button>
