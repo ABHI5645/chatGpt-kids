@@ -22,6 +22,14 @@ export function InputWithButton() {
       value: "suno/bark-small",
       label: "suno/bark-small",
     },
+    {
+      value: "microsoft/speecht5_tts",
+      label: "microsoft/speecht5_tts",
+    },
+    {
+      value: "espnet/kan-bayashi_ljspeech_vits",
+      label: "espnet/kan-bayashi_ljspeech_vits",
+    },
   ];
 
   const query = async (data, model) => {
@@ -29,7 +37,7 @@ export function InputWithButton() {
       `https://api-inference.huggingface.co/models/${model}`,
       {
         headers: {
-          Authorization: `Bearer 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`,
+          Authorization: `Bearer ${process.env.NEXT_PUBLIC_HUGGINGFACE_API_SECRET}`,
         },
         method: "POST",
         body: JSON.stringify(data),
