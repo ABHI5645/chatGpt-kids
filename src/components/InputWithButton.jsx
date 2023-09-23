@@ -20,9 +20,9 @@ export function InputWithButton() {
     },
   ];
 
-  const query = async (data) => {
+  const query = async (data, model) => {
     const response = await fetch(
-      "https://api-inference.huggingface.co/models/facebook/fastspeech2-en-ljspeech",
+      `https://api-inference.huggingface.co/models/${model}`,
       {
         headers: {
           Authorization: `Bearer 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`,
@@ -48,7 +48,7 @@ export function InputWithButton() {
     setLoading(true);
     console.log(`User input:${inputValue}`);
     console.log(`Model chosen:${model.value}`);
-    query({ inputs: inputValue }).then((response) => {
+    query({ inputs: inputValue }, model.value).then((response) => {
       //console.log(JSON.stringify(response));
       console.log(response);
       setLoading(false);
