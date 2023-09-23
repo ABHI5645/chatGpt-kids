@@ -3,12 +3,20 @@ import { Input } from "@/components/ui/input";
 import { useState } from "react";
 import { AlertDescription } from "./ui/alert";
 import { AlertDestructive } from "./ModelFailedAlert";
+import Select from "react-select";
 
 export function InputWithButton() {
   const [inputValue, setInputValue] = useState("");
   const [audioUrl, setAudioUrl] = useState();
   const [loading, setLoading] = useState(false);
   const [displayAlert, setDisplayAlert] = useState(false);
+
+  const options = [
+    {
+      value: "facebook/fastspeech2-en-ljspeech",
+      label: "facebook/fastspeech2-en-ljspeech",
+    },
+  ];
 
   const query = async (data) => {
     const response = await fetch(
@@ -53,6 +61,7 @@ export function InputWithButton() {
             placeholder="Enter Text"
             onChange={(e) => setInputValue(e.target.value)}
           />
+          <Select options={options} className="w-[20rem]" placeholder="Select model" />
           <Button type="submit" disabled={loading}>
             {loading ? <>Loading...</> : <>Convert to audio</>}
           </Button>
