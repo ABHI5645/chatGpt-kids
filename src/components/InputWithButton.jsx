@@ -46,6 +46,7 @@ export function InputWithButton() {
     if (!response.ok) {
       //throw new Error("Request failed");
       setDisplayAlert(true);
+      setAudioUrl(null);
       return;
     }
     setDisplayAlert(false);
