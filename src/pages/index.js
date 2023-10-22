@@ -49,10 +49,11 @@ export default function Home() {
               />
             }
             className="text-gray-400 font-semibold"
+            component={<Link href='/conversation'/>}
           >
-            <Link href="/conversation">
+          
             Conversation
-            </Link>
+  
           </MenuItem>
           <MenuItem
             icon={<GoImage style={{ color: "violet" }} />}

@@ -1,22 +1,55 @@
-import React,{useState} from 'react'
+import React,{useEffect, useState} from 'react'
 
-const FileUpload = ({setTranscript}) => {
-const [file,setFile] = useState();
+const FileUpload = ({transcription,setTranscription,loading,setLoading}) => {
+const [file,setFile] = useState(null);
+
+
 const handleFileChange = (e) =>{
     
     if (e.target.files){
         let file = e.target.files[0]
         setFile(file)
     }
+   
+
 }
+
 const handleUploadClick =async () =>{
+  setLoading(true);
     if(!file){
         return;
     }
-    const formData = new FormData();
+
+    try {
+        const formData = new FormData();
+        formData.append("audio", file);
+
+        const response = await fetch(
+          "https://api-inference.huggingface.co/models/vasista22/whisper-hindi-large-v2",
+          {
+            method: "POST",
+            headers: {
+              Authorization: "Bearer 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",
+            },
+            body: formData,
+          }
+        );
+
+        if (response.ok) {
+          const result = await response.json();
+          setTranscription(result.text);
+        } else {
+          console.error("Error transcribing audio");
+        }
+      } catch (error) {
+        console.error("Error:", error);
+      } finally {
+        setLoading(false);
+      }
+    }
 
 
-}
+
 
 
   return (
@@ -34,12 +67,22 @@ const handleUploadClick =async () =>{
 				/>
       </div>
       <div className={"text-right py-3"}>
+        {loading?(
+        				<button
+                type="button"
+                disabled={loading}
+                className="inline-block border border-solid border-black-700 rounded bg-secondary px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-primary shadow-sm transition duration-150 ease-in-out hover:bg-dark hover:shadow-md disabled:bg-light disabled:cursor-not-allowed">
+                          Loading...
+              </button>
+        ) :(
 				<button
 					type="button"
 					onClick={handleUploadClick}
 					className="inline-block border border-solid border-black-700 rounded bg-secondary px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-primary shadow-sm transition duration-150 ease-in-out hover:bg-dark hover:shadow-md disabled:bg-light disabled:cursor-not-allowed">
                     UPLOAD
 				</button>
+        )
+}
 			</div>
     </div>
   )

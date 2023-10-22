@@ -16,7 +16,8 @@ import FileUpload from '@/components/FileUpload';
 import Intro from '@/components/Intro';
 
 const Conversation = () => {
-    const [transcript, setTranscript] = useState('')
+    const [transcription, setTranscription] = useState('')
+    const [loading,setLoading] = useState(false)
   return (
     <div className="flex">
 
@@ -52,10 +53,9 @@ const Conversation = () => {
               />
             }
             className="text-gray-400 font-semibold"
+            component={<Link href="/conversation" />}
           >
-            <Link href="/conversation">
             Conversation
-            </Link>
           </MenuItem>
           <MenuItem
             icon={<GoImage style={{ color: "violet" }} />}
@@ -95,9 +95,10 @@ const Conversation = () => {
        <h1>
         Convert Speech To Text
        </h1>
-       <div className={"w-full w-9/12"}><FileUpload setTranscript={setTranscript}/></div>
+       <div className={"w-[90%]"}><FileUpload transcription={transcription} setTranscription={setTranscription} loading={loading} setLoading={setLoading}/></div>
 
 <h2 className={"text-lg mb-2"}>Transcript:</h2>
+{transcription && <p>{transcription}</p>}
       </section>
     </div>
   )
