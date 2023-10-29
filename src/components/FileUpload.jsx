@@ -25,7 +25,7 @@ const handleUploadClick =async () =>{
         formData.append("audio", file);
 
         const response = await fetch(
-          "https://api-inference.huggingface.co/models/vasista22/whisper-hindi-large-v2",
+          "https://api-inference.huggingface.co/models/facebook/mms-1b-fl102",
           {
             method: "POST",
             headers: {
